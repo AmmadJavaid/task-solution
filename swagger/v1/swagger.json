@@ -1,0 +1,373 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API V1",
+    "version": "v1"
+  },
+  "paths": {
+    "/v1/posts/{id}/comments": {
+      "post": {
+        "summary": "Comment create",
+        "tags": [
+          "comments"
+        ],
+        "operationId": "create_comment",
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "post created successfully"
+          },
+          "422": {
+            "description": "Returns unprocessable entity"
+          },
+          "404": {
+            "description": "Returns unprocessable entity"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/comment"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/posts/{post_id}/comments/{id}": {
+      "put": {
+        "summary": "Comment create",
+        "tags": [
+          "comments"
+        ],
+        "operationId": "create_comment",
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "post_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "post updated successfully"
+          },
+          "422": {
+            "description": "Returns unprocessable entity"
+          },
+          "404": {
+            "description": "Record not found"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/comment"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Destroy create",
+        "tags": [
+          "comments"
+        ],
+        "operationId": "destroy_comment",
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "post_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "post updated successfully"
+          },
+          "404": {
+            "description": "Record not found"
+          }
+        }
+      }
+    },
+    "/v1/posts": {
+      "get": {
+        "summary": "posts feed",
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "tags": [
+          "Posts"
+        ],
+        "operationId": "posts_feed",
+        "responses": {
+          "200": {
+            "description": "Successfully return posts"
+          }
+        }
+      },
+      "post": {
+        "summary": "Post create",
+        "tags": [
+          "Posts"
+        ],
+        "operationId": "create_post",
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "parameters": [
+
+        ],
+        "responses": {
+          "201": {
+            "description": "post created successfully"
+          },
+          "422": {
+            "description": "Returns unprocessable entity"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/post"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/posts/{id}": {
+      "get": {
+        "summary": "post show",
+        "tags": [
+          "Posts"
+        ],
+        "operationId": "show_post",
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns success response"
+          },
+          "404": {
+            "description": "Returns not found response"
+          }
+        }
+      },
+      "put": {
+        "summary": "Post update",
+        "tags": [
+          "Posts"
+        ],
+        "operationId": "update_post",
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "post created successfully"
+          },
+          "422": {
+            "description": "Returns unprocessable entity"
+          },
+          "404": {
+            "description": "Record not found"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/post"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "destroy post",
+        "tags": [
+          "Posts"
+        ],
+        "operationId": "destroy_post",
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Returns success response"
+          },
+          "404": {
+            "description": "Record not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "post": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "text"
+        }
+      },
+      "example": {
+        "post": {
+          "title": "abc",
+          "description": "xyz"
+        }
+      }
+    },
+    "sign_in": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "example": {
+        "sign_in": {
+          "email": "abc@abc.com",
+          "password": "password"
+        }
+      }
+    },
+    "comment": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "text"
+        }
+      },
+      "example": {
+        "comment": {
+          "content": "abc"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "bearerAuth": {
+      "type": "apiKey",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "in": "header",
+      "description": "JWT Authorization header using the Bearer scheme. Example: Authorization: Bearer {token}",
+      "name": "Authorization"
+    }
+  }
+}

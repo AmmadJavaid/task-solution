@@ -16,4 +16,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :update, :destroy]
     end
   end
+
+  mount Rswag::Api::Engine => '/api-docs'
+  mount Rswag::Ui::Engine => '/api-docs'
 end
