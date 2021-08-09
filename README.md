@@ -26,4 +26,4 @@
 `localhost:3000/api-docs/`
 
 ## Demo
-http://new-wave-assignment.herokuapp.com/api-docs/index.html
+https://task-solution.herokuapp.com/api-docs/index.html
