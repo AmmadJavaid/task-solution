@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  devise_for :users,
+             controllers: {
+              sessions: 'v1/users/sessions',
+              registrations: 'v1/users/registrations'
+            }
+
   namespace :v1 do
     resources :users, only: [:index, :show] do
       member do
