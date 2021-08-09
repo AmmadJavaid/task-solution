@@ -1,6 +1,5 @@
 module V1
   class PostsController < ApplicationController
-    before_action :authenticate_user!
     before_action :set_post, only: %i[show update destroy]
 
     def index
@@ -15,10 +14,12 @@ module V1
     def show; end
 
     def update
+      authorize @post
       render_okay(@post) if @post.update!(post_params)
     end
 
     def destroy
+      authorize @post
       render_no_content if @post.destroy
     end
 

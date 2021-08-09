@@ -9,10 +9,12 @@ module V1
     end
 
     def update
+      authorize @comment
       render_okay(@comment) if @comment.update!(comment_params)
     end
 
     def destroy
+      authorize @comment
       render_no_content if @comment.destroy
     end
 
