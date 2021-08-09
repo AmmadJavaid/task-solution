@@ -7,7 +7,7 @@ RSpec.configure do |config|
   # Specify a root folder where Swagger JSON files are generated
   # NOTE: If you're using the rswag-api to serve API descriptions, you'll need
   # to ensure that it's configured to serve Swagger from the same folder
-  config.swagger_root = Rails.root.join('v1/swagger').to_s
+  config.swagger_root = Rails.root.join('swagger').to_s
 
   # Define one or more Swagger documents and provide global metadata for each one
   # When you run the 'rswag:specs:swaggerize' rake task, the complete Swagger will
@@ -44,8 +44,23 @@ RSpec.configure do |config|
             password: { type: :string }
           },
           example: {
-            sign_in: {
+            user: {
               email: "abc@abc.com" ,
+              password: "password"
+            }
+          }
+        },
+        sign_up: {
+          type: :object,
+          properties: {
+            name: { type: :string },
+            email: { type: :string },
+            password: { type: :string }
+          },
+          example: {
+            user: {
+              name: "john" ,
+              email: "john@abc.com" ,
               password: "password"
             }
           }

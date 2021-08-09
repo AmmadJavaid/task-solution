@@ -7,7 +7,7 @@ describe 'Posts API', type: :request, swagger_doc: 'v1/swagger.json' do
   context 'creating new comment' do
     path '/v1/posts/{id}/comments' do
       post 'Comment create' do
-        tags 'comments'
+        tags 'Comment'
         operationId 'create_comment'
         security [bearerAuth: []]
         consumes 'application/json'
@@ -65,7 +65,7 @@ describe 'Posts API', type: :request, swagger_doc: 'v1/swagger.json' do
   context 'update comment' do
     path '/v1/posts/{post_id}/comments/{id}' do
       put 'Comment create' do
-        tags 'comments'
+        tags 'Comment'
         operationId 'create_comment'
         security [bearerAuth: []]
         consumes 'application/json'
@@ -131,7 +131,7 @@ describe 'Posts API', type: :request, swagger_doc: 'v1/swagger.json' do
   context 'delete comment' do
     path '/v1/posts/{post_id}/comments/{id}' do
       delete 'Destroy create' do
-        tags 'comments'
+        tags 'Comment'
         operationId 'destroy_comment'
         security [bearerAuth: []]
         consumes 'application/json'

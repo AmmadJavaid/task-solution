@@ -8,7 +8,7 @@ describe 'Posts API', type: :request, swagger_doc: 'v1/swagger.json' do
     path "/v1/posts" do
       get 'posts feed' do
         security [bearerAuth: []]
-        tags 'Posts'
+        tags 'Post'
         operationId 'posts_feed'
         consumes 'application/json'
         produces 'application/json'
@@ -29,7 +29,7 @@ describe 'Posts API', type: :request, swagger_doc: 'v1/swagger.json' do
   context 'creating new post' do
     path '/v1/posts' do
       post 'Post create' do
-        tags 'Posts'
+        tags 'Post'
         operationId 'create_post'
         security [bearerAuth: []]
         consumes 'application/json'
@@ -72,7 +72,7 @@ describe 'Posts API', type: :request, swagger_doc: 'v1/swagger.json' do
   context 'show post' do
     path '/v1/posts/{id}' do
       get 'post show' do
-        tags 'Posts'
+        tags 'Post'
         operationId 'show_post'
         security [bearerAuth: []]
         consumes 'application/json'
@@ -101,7 +101,7 @@ describe 'Posts API', type: :request, swagger_doc: 'v1/swagger.json' do
   context 'update post' do
     path '/v1/posts/{id}' do
       put 'Post update' do
-        tags 'Posts'
+        tags 'Post'
         operationId 'update_post'
         security [bearerAuth: []]
         consumes 'application/json'
@@ -166,7 +166,7 @@ describe 'Posts API', type: :request, swagger_doc: 'v1/swagger.json' do
   context 'destroy post' do
     path '/v1/posts/{id}' do
       delete 'destroy post' do
-        tags 'Posts'
+        tags 'Post'
         operationId 'destroy_post'
         security [bearerAuth: []]
         consumes 'application/json'

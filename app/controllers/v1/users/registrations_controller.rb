@@ -16,7 +16,7 @@ module V1
       end
 
       def register_failed
-        render json: { message: "Something went wrong." }
+        render json: { errors: resource.errors.full_messages }, status: 422
       end
     end
   end

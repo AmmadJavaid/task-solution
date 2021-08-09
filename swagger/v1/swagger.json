@@ -5,11 +5,63 @@
     "version": "v1"
   },
   "paths": {
+    "/users/sign_in": {
+      "post": {
+        "summary": "User Sign-in",
+        "tags": [
+          "Authentication"
+        ],
+        "operationId": "sign_in",
+        "parameters": [
+
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfull Login"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/sign_in"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users": {
+      "post": {
+        "summary": "User Sign-Up",
+        "tags": [
+          "Authentication"
+        ],
+        "operationId": "sign_up",
+        "parameters": [
+
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfull registered"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/sign_up"
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/posts/{id}/comments": {
       "post": {
         "summary": "Comment create",
         "tags": [
-          "comments"
+          "Comment"
         ],
         "operationId": "create_comment",
         "security": [
@@ -55,7 +107,7 @@
       "put": {
         "summary": "Comment create",
         "tags": [
-          "comments"
+          "Comment"
         ],
         "operationId": "create_comment",
         "security": [
@@ -107,7 +159,7 @@
       "delete": {
         "summary": "Destroy create",
         "tags": [
-          "comments"
+          "Comment"
         ],
         "operationId": "destroy_comment",
         "security": [
@@ -156,7 +208,7 @@
           }
         ],
         "tags": [
-          "Posts"
+          "Post"
         ],
         "operationId": "posts_feed",
         "responses": {
@@ -168,7 +220,7 @@
       "post": {
         "summary": "Post create",
         "tags": [
-          "Posts"
+          "Post"
         ],
         "operationId": "create_post",
         "security": [
@@ -204,7 +256,7 @@
       "get": {
         "summary": "post show",
         "tags": [
-          "Posts"
+          "Post"
         ],
         "operationId": "show_post",
         "security": [
@@ -236,7 +288,7 @@
       "put": {
         "summary": "Post update",
         "tags": [
-          "Posts"
+          "Post"
         ],
         "operationId": "update_post",
         "security": [
@@ -280,7 +332,7 @@
       "delete": {
         "summary": "destroy post",
         "tags": [
-          "Posts"
+          "Post"
         ],
         "operationId": "destroy_post",
         "security": [
@@ -340,8 +392,29 @@
         }
       },
       "example": {
-        "sign_in": {
+        "user": {
           "email": "abc@abc.com",
+          "password": "password"
+        }
+      }
+    },
+    "sign_up": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "example": {
+        "user": {
+          "name": "john",
+          "email": "john@abc.com",
           "password": "password"
         }
       }
