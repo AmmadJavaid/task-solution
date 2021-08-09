@@ -6,15 +6,11 @@ class PostPolicy
     @post = post
   end
 
-  def create?
-    user
-  end
-
   def update?
-    user
+    @post.creator_id == user.id
   end
 
   def destroy?
-    user
+    update?
   end
 end

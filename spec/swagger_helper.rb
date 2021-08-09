@@ -54,7 +54,7 @@ RSpec.configure do |config|
           },
           example: {
             user: {
-              email: "abc@abc.com" ,
+              email: "user_1@abc.com" ,
               password: "password"
             }
           }
@@ -81,7 +81,7 @@ RSpec.configure do |config|
           },
           example: {
             comment: {
-              content: 'abc'
+              message: 'abc'
             }
           }
         }

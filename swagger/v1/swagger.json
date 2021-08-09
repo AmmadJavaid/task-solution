@@ -319,13 +319,16 @@
         ],
         "responses": {
           "200": {
-            "description": "post created successfully"
+            "description": "post update successfully"
           },
           "422": {
             "description": "Returns unprocessable entity"
           },
           "404": {
             "description": "Record not found"
+          },
+          "401": {
+            "description": "Cannot update other user's post"
           }
         },
         "requestBody": {
@@ -367,6 +370,9 @@
           },
           "404": {
             "description": "Record not found"
+          },
+          "401": {
+            "description": "Cannot delete other user's post"
           }
         }
       }
@@ -402,7 +408,7 @@
       },
       "example": {
         "user": {
-          "email": "abc@abc.com",
+          "email": "user_1@abc.com",
           "password": "password"
         }
       }
@@ -437,7 +443,7 @@
       },
       "example": {
         "comment": {
-          "content": "abc"
+          "message": "abc"
         }
       }
     }

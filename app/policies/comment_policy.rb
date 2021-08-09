@@ -6,15 +6,11 @@ class CommentPolicy
     @comment = comment
   end
 
-  def create?
-    user
-  end
-
   def update?
-    user && comment
+    user.id == comment.user_id
   end
 
   def destroy?
-    user && comment
+    update?
   end
 end

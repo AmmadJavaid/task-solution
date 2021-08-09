@@ -110,9 +110,8 @@ describe 'Posts API', type: :request, swagger_doc: 'v1/swagger.json' do
         parameter name: :id, in: :path, type: :integer
         parameter name: :post_payload, in: :body, schema: { '$ref' => '#/definitions/post' }
 
-        response '200', 'post created successfully' do
-          let!(:user) { create :user }
-          let!(:posting) { create :post }
+        response '200', 'post update successfully' do
+          let!(:posting) { create :post, creator: user }
           let(:id) { posting.id }
 
           let(:post_payload) do
@@ -130,8 +129,7 @@ describe 'Posts API', type: :request, swagger_doc: 'v1/swagger.json' do
         end
 
         response '422', 'Returns unprocessable entity' do
-          let!(:user) { create :user }
-          let!(:posting) { create :post }
+          let!(:posting) { create :post, creator: user }
           let(:id) { posting.id }
 
           let(:post_payload) do
@@ -148,6 +146,21 @@ describe 'Posts API', type: :request, swagger_doc: 'v1/swagger.json' do
 
         response '404', 'Record not found' do
           let(:id) { 0 }
+          let(:post_payload) do
+            {
+              post: {
+                title: nil,
+                description: "descriprion xyz"
+              }
+            }
+          end
+
+          run_test!
+        end
+
+        response '401', "Cannot update other user's post" do
+          let!(:posting) { create :post }
+          let(:id) { posting.id }
           let(:post_payload) do
             {
               post: {
@@ -185,6 +198,15 @@ describe 'Posts API', type: :request, swagger_doc: 'v1/swagger.json' do
 
         response '404', 'Record not found' do
           let(:id) { 0 }
+
+          run_test!
+        end
+
+        response '401', "Cannot delete other user's post" do
+          let!(:new_user) { create :user }
+          let!(:new_post) { create :post, creator: user }
+          let(:Authorization) { auth_headers(new_user) }
+          let(:id) { new_post.id }
 
           run_test!
         end
